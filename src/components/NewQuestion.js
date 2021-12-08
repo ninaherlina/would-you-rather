@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { handleSaveQuestion } from '../actions/shared'
-import Nav from './Nav'
+import Navigation from './Navigation'
 import NavigateLogin from './NavigateLogin'
 import { Button } from 'react-bootstrap'
 import { Container, Card, Form } from 'react-bootstrap'
@@ -41,16 +41,16 @@ class NewQuestion extends Component {
 
     const { optionOneText, optionTwoText, toHome } = this.state
 
-    if (toHome) {
+    if (toHome === true ) {
       return <Redirect to={{ pathname: '/home' }} />
     }
 
     return (
       <div>
-        <Nav />
+        <Navigation />
           <Container>
             <Card className='new-question'>
-              <Card.Header>Add Your Question</Card.Header>
+              <Card.Header>Add Your Questions</Card.Header>
                 <Card.Body>
                   <Card.Title>Would You Rather...</Card.Title>
                   <Form>
@@ -58,13 +58,13 @@ class NewQuestion extends Component {
                     placeholder='Enter Option One Here'
                     value={optionOneText}
                     onChange={this.handleChange('optionOneText')}
-                    rows="2" cols="53"
+                    rows="2" cols="52"
                   />
                   <textarea
                     placeholder='Enter Option Two Here'
                     value={optionTwoText}
                     onChange={this.handleChange('optionTwoText')}
-                    rows="2" cols="53"
+                    rows="2" cols="52"
                   />
                   <Button
                     variant='danger'

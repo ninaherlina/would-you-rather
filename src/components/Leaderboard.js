@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatLeaderBoard } from '../utils/helpers'
-import Nav from './Nav'
+import Navigation from './Navigation'
 import NavigateLogin from './NavigateLogin'
 import { Table, Card } from 'react-bootstrap'
 
@@ -17,7 +17,7 @@ class Leaderboard extends Component {
 
     return (
       <div>
-        <Nav />
+        <Navigation />
           <Card className='card-leaderboard'>
             <Table>
               <thead>

@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Redirect } from 'react-router-dom'
 
-class NavigateLogin extends Component {
+function NavigateLogin (props) {
 
-  render() {
-    const { afterLogin } = this.props
+    const { afterLogin } = props
     return (
       <Redirect to={{
         pathname: '/',
@@ -13,7 +12,6 @@ class NavigateLogin extends Component {
         }
       }} />
     )
-  }
 }
 
 export default NavigateLogin

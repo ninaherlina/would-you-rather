@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
 import { formatDate } from '../utils/helpers'
 import { Button, Card, Container } from 'react-bootstrap'
@@ -51,4 +50,4 @@ function mapStateToProps ({ users, questions }, { id }) {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Question))
+export default connect(mapStateToProps)(Question)

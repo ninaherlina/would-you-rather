@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import React, { Component, Fragment } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React, { useEffect, Fragment } from 'react'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
@@ -13,43 +13,42 @@ import { Container } from 'react-bootstrap'
 
 const NotFoundPage = () => (
   <Container className='not-found'>
-    <h3>404 page not found! We are sorry but the page you are looking for does not exist.</h3>
+    <h3>404 page not found! We are sorry but the page you are looking for do not exist.</h3>
   </Container>
 )
 
-class App extends Component {
+function App (props) {
 
-  componentDidMount() {
-    this.props.dispatch(handleInitialData())
-  }
+  useEffect(() => {
+    
+    props.dispatch(handleInitialData())
+    
+  })
 
-  render() {
-    return (
-    <Router>
-      <Fragment>
+  return (
+      <Router>
+        <Fragment>
         <LoadingBar style={{ backgroundColor: 'red'}} />
-          { 
-            this.props.loading
-              ? null
-              : <div className='app'>
-              <Switch>
+        <div>
+          { props.loading === true
+            ? null
+            : <Switch>
                 <Route exact path='/' component={Login} />
-                <Route exact path='/home' component={Home} />
-                <Route exact path='/questions/:id' component={QuestionPage} />
-                <Route exact path='/leaderboard' component={Leaderboard} />
-                <Route exact path='/add' component={NewQuestion} />
+                <Route path='/home' component={Home} />
+                <Route path='/questions/:id' component={QuestionPage} />
+                <Route path='/leaderboard' component={Leaderboard} />
+                <Route path='/add' component={NewQuestion} />
                 <Route component={NotFoundPage} />
               </Switch>  
-              </div>
           }
+        </div>  
         </Fragment>
       </Router>
     )
-  }
 }
 
 const mapStateToProps = ({ users }) => ({
-    loading: users === {}
+    loading: users === null
 })
 
 export default connect(mapStateToProps)(App)

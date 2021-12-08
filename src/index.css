@@ -8,13 +8,12 @@ body {
 
 .card {
   width: 100%;
-  max-width: 350px;
-  padding: 10px;
+  max-width: 400px;
+  padding: 20px;
   display: flex;
   margin: 0 auto;
-  border: 2px solid darkgray;
+  border: 3px solid darkgray;
   border-radius: 1px;
-
   background-color: #16d8e6;
 }
 
@@ -62,4 +61,13 @@ li {
 
 .checked {
   margin-left: 10px;
+}
+
+.not-found {
+  text-align: center;
+  margin-top: 200px;
+}
+
+.active {
+  font-weight: bold;
 }

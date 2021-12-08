@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
-import Nav from './Nav'
+import Navigation from './Navigation'
 import NavigateLogin from './NavigateLogin'
 import Option from './Option'
 import { handleAnswer } from '../actions/shared'
@@ -27,10 +26,19 @@ class QuestionPage extends Component {
     if (question === null) {
       return (
         <div>
-          <Nav />
+          <Navigation />
           <Card>
             <Card.Text>
-              There are no questions!
+              This question do not exist!
+              <Button
+              className='button'
+              variant='danger'
+              size='small'
+              as={Link}
+              to={'/home'}
+            >
+              Return to Homepage
+            </Button>
             </Card.Text>
           </Card>
         </div>
@@ -45,7 +53,7 @@ class QuestionPage extends Component {
 
     return (
       <div>
-        <Nav />
+        <Navigation />
         <Card>
           <Card.Img alt='avatar' src={require('../assets/' + avatar).default}/>
           <Card.Body>
@@ -124,4 +132,4 @@ const mapStateToProps = ({authedUser, questions, users}, props) => {
 }
 }
 
-export default withRouter(connect(mapStateToProps)(QuestionPage))
+export default connect(mapStateToProps)(QuestionPage)

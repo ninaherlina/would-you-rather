@@ -9,7 +9,6 @@ function Login (props) {
 
   const [state , setState] = useState({
     userId : 'none',
-    open: false,
     loggedIn: false
 })
 
@@ -18,20 +17,21 @@ function Login (props) {
   }
 
   const handleLogin = () => {
-    if (state.userId === 'none' ) {
-      setState({ open: true })
-    } else {
-      props.dispatch(setAuthedUser(state.userId))
-      setState({ loggedIn: true })
-    }
+    props.dispatch(setAuthedUser(state.userId))
+    setState({ loggedIn: true })
+  }
+
+  let afterLogin = '/home'
+
+  if (props.location.state) {
+    afterLogin = props.location.state.afterLogin
+  }
+
+  if (state.loggedIn === true) {
+    return <Redirect to={ afterLogin } />       
   }
 
   const { users } = props
-  const afterLogin = '/home'
-
-    if (state.loggedIn) {
-      return <Redirect to={afterLogin} />       
-    }
 
   return (
     <Container className='login'>  

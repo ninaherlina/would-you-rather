@@ -22,6 +22,6 @@ $ git clone https://github.com/ninaherlina/would-you-rather.git
 
 In the Project folder:
 
-Install all project dependencies with "yarn add"
+Install all project dependencies with "yarn install"
 
 Start the Project with "yarn start"
